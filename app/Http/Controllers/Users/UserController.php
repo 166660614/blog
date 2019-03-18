@@ -22,8 +22,7 @@ class UserController extends Controller{
                 'errmsg'=>'invalid userinfo',
             ];
         }
-        $data=json_encode($data);
-        print_r($data);
+        print_r(json_encode($data));
     }
     public function center(Request $request){
         $user=$request->input('u');
@@ -64,28 +63,20 @@ class UserController extends Controller{
         }
         print_r($data);
       }
-    public function order(){
-        //print_r($_SERVER);
-        $request_url=substr(md5($_SERVER['REQUEST_URI']),0,10);
-        $invalid_ip=$_SERVER['REMOTE_ADDR'];
-        $redis_key="str:".$request_url.'ip:'.$invalid_ip;
-        $count=Redis::incr($redis_key);
-        $invalid_time=Redis::expire($redis_key,20);
-        if($count>5 && $invalid_time<=20){
-            //防止恶意刷api
-            $data=[
-                'errcode'=>5005,
-                'errmsg'=>'called frequently'
-            ];
-            Redis::sadd('invalid_ip',$invalid_ip);//将恶意ip存入redis集合
-            $ip_array=Redis::smembers('invalid_ip');//读取redis ip集合
-        }else{
-            $data=[
-                'errcode'=>4001,
-                'errmsg'=>'ok',
-            ];
-        }
-        $data=json_encode($data);
-        return $data;
-    }
+      public function api(){
+          $user=base64_decode($_POST['post_data']);
+          $time=$_GET['t'];
+          $method='AES-128-CBC';
+          $salt='salt88';
+          $key="key";
+          $option=OPENSSL_RAW_DATA;
+          $iv=substr(md5($time.$salt),5,16);
+          $dec_data=openssl_decrypt($user,$method,$key,$option,$iv);
+              $data=[
+                  'code'=>4001,
+                  'msg'=>'ok',
+                  'info'=>$dec_data
+              ];
+         print_r(json_encode($data));
+      }
 }

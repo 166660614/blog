@@ -35,7 +35,6 @@ $app = new Laravel\Lumen\Application(
 | your own bindings here if you like or you can make another file.
 |
 */
-
 $app->singleton(
     Illuminate\Contracts\Debug\ExceptionHandler::class,
     App\Exceptions\Handler::class
@@ -57,9 +56,9 @@ $app->singleton(
 |
 */
 
-// $app->middleware([
-//     App\Http\Middleware\ExampleMiddleware::class
-// ]);
+ $app->middleware([
+     App\Http\Middleware\IllegalMiddle::class
+ ]);
 
 // $app->routeMiddleware([
 //     'auth' => App\Http\Middleware\Authenticate::class,

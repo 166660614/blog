@@ -17,3 +17,4 @@ $router->get('/', function () use ($router) {
 $router->post('/user/login','Users\UserController@login');//登录接口
 $router->post('/user/center','Users\UserController@center');//用户中心接口
 $router->post('/user/order','Users\UserController@order');//防刷
+$router->post('/user/api','Users\UserController@api');
