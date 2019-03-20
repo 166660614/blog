@@ -121,7 +121,11 @@ class UserController extends Controller{
             'user_pwd'=>$upwd,
         ];
         $user_data=UserModel::where($where)->first();
-        return $user_data;
+        $data=[
+            'errcode'=>'5001',
+            'errmsg'=>$user_data,
+        ];
+        return $data;
         if($user_data){
             $data=[
                 'errcode'=>'4001',
