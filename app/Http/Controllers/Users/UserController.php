@@ -63,7 +63,7 @@ class UserController extends Controller{
         }
         print_r($data);
       }
-      public function api(){
+    public function api(){
           $time=$_GET['t'];
           $method='AES-128-CBC';
           $salt='salt88';
@@ -97,7 +97,7 @@ class UserController extends Controller{
               print_r(json_encode($res_info),true);
           }
       }
-      public function hapi(){
+    public function hapi(){
         $value=$_POST['value'];
         if($value){
             $data=[
@@ -112,4 +112,13 @@ class UserController extends Controller{
         }
         return $data;
       }
+    public function ulogin(){
+        $uname=$_POST['uname'];
+        $upwd=$_POST['upwd'];
+        $data=[
+            'errcode'=>'4001',
+            'errmsg'=>$uname.$upwd,
+        ];
+        return $data;
+    }
 }

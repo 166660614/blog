@@ -20,3 +20,5 @@ $router->post('/user/order','Users\UserController@order');//防刷
 $router->post('/user/api','Users\UserController@api');
 
 $router->post('/h/api','Users\UserController@hapi');
+
+$router->post('/u/ulogin','Users\UserController@ulogin');
