@@ -22,3 +22,4 @@ $router->post('/user/api','Users\UserController@api');
 $router->post('/h/api','Users\UserController@hapi');
 
 $router->post('/u/ulogin','Users\UserController@ulogin');
+$router->post('/u/uregister','Users\UserController@uregister');
