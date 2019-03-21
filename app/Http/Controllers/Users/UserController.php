@@ -116,45 +116,75 @@ class UserController extends Controller{
     public function ulogin(){
         $uname=$_POST['uname'];
         $upwd=$_POST['upwd'];
-        $where=[
-            'user_name'=>$uname,
-            'user_pwd'=>$upwd,
-        ];
-        $user_data=UserModel::where($where)->first();
-        if($user_data){
-            $data=[
-                'errcode'=>'4001',
-                'errmsg'=>'登陆成功',
-            ];
-        }else{
-            $data=[
-                'errcode'=>'5001',
-                'errmsg'=>'账号或者密码错误',
-            ];
-        }
-        return $data;
+        $url="http://passport.52self.cn/u/login";
+        $curl = curl_init();
+        //设置抓取的url
+        curl_setopt($curl, CURLOPT_URL, $url);
+        //设置头文件的信息作为数据流输出
+        curl_setopt($curl, CURLOPT_HEADER, 1);
+        //设置获取的信息以文件流的形式返回，而不是直接输出。
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        //设置post方式提交
+        curl_setopt($curl, CURLOPT_POST, 1);
+        //关闭HEADER头
+        curl_setopt($curl,CURLOPT_HEADER,0);
+        $post_data=['uname'=>$uname,'upwd'=>$upwd];
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $post_data);
+        $res_data =curl_exec($curl);
+//        $where=[
+//            'user_name'=>$uname,
+//            'user_pwd'=>$upwd,
+//        ];
+//        $user_data=UserModel::where($where)->first();
+//        if($user_data){
+//            $data=[
+//                'errcode'=>'4001',
+//                'errmsg'=>'登陆成功',
+//            ];
+//        }else{
+//            $data=[
+//                'errcode'=>'5001',
+//                'errmsg'=>'账号或者密码错误',
+//            ];
+//        }
+//        return $data;
     }
     public function uregister(){
         $uname=$_POST['uname'];
         $upwd=$_POST['upwd'];
         $uemail=$_POST['uemail'];
-        $data=[
-            'user_name'=>$uname,
-            'user_pwd'=>$upwd,
-            'user_email'=>$uemail,
-        ];
-        $res=UserModel::insert($data);
-        if($res){
-            $data=[
-                'errcode'=>'4001',
-                'errmsg'=>'注册成功'
-            ];
-        }else{
-            $data=[
-                'errcode'=>'5001',
-                'errmsg'=>'注册失败',
-            ];
-        }
-        return $data;
+        $url="http://passport.52self.cn/u/register";
+        $curl = curl_init();
+        //设置抓取的url
+        curl_setopt($curl, CURLOPT_URL, $url);
+        //设置头文件的信息作为数据流输出
+        curl_setopt($curl, CURLOPT_HEADER, 1);
+        //设置获取的信息以文件流的形式返回，而不是直接输出。
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        //设置post方式提交
+        curl_setopt($curl, CURLOPT_POST, 1);
+        //关闭HEADER头
+        curl_setopt($curl,CURLOPT_HEADER,0);
+        $post_data=['uname'=>$uname,'upwd'=>$upwd,'uemail'=>$uemail];
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $post_data);
+        $res_data =curl_exec($curl);
+//        $data=[
+//            'user_name'=>$uname,
+//            'user_pwd'=>$upwd,
+//            'user_email'=>$uemail,
+//        ];
+//        $res=UserModel::insert($data);
+//        if($res){
+//            $data=[
+//                'errcode'=>'4001',
+//                'errmsg'=>'注册成功'
+//            ];
+//        }else{
+//            $data=[
+//                'errcode'=>'5001',
+//                'errmsg'=>'注册失败',
+//            ];
+//        }
+//        return $data;
     }
 }
