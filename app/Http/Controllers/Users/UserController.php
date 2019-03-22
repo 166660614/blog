@@ -158,7 +158,7 @@ class UserController extends Controller{
         $uname=$_POST['uname'];
         $upwd=$_POST['upwd'];
         $uemail=$_POST['uemail'];
-        $url="http://passport.52self.cn/u/register";
+        $url="http://passport.52self.cn/u/uregister";
         $curl = curl_init();
         //设置抓取的url
         curl_setopt($curl, CURLOPT_URL, $url);
