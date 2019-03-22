@@ -130,7 +130,7 @@ class UserController extends Controller{
         curl_setopt($curl,CURLOPT_HEADER,0);
         $post_data=['uname'=>$uname,'upwd'=>$upwd];
         curl_setopt($curl, CURLOPT_POSTFIELDS, $post_data);
-        $res_data =json_decode(curl_exec($curl).true);
+        $res_data =json_decode(curl_exec($curl),true);
         $data=[
             'errcode'=>'4001',
             'errmsg'=>$res_data,
