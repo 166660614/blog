@@ -130,7 +130,12 @@ class UserController extends Controller{
         curl_setopt($curl,CURLOPT_HEADER,0);
         $post_data=['uname'=>$uname,'upwd'=>$upwd];
         curl_setopt($curl, CURLOPT_POSTFIELDS, $post_data);
-        $res_data =curl_exec($curl);
+        $res_data =json_decode(curl_exec($curl).true);
+        $data=[
+            'errcode'=>$res_data['errcode'],
+            'errmsg'=>$res_data['errmsg'],
+        ];
+        return $data;
 //        $where=[
 //            'user_name'=>$uname,
 //            'user_pwd'=>$upwd,
@@ -167,7 +172,12 @@ class UserController extends Controller{
         curl_setopt($curl,CURLOPT_HEADER,0);
         $post_data=['uname'=>$uname,'upwd'=>$upwd,'uemail'=>$uemail];
         curl_setopt($curl, CURLOPT_POSTFIELDS, $post_data);
-        $res_data =curl_exec($curl);
+        $res_data =json_decode(curl_exec($curl),true);
+        $data=[
+            'errcode'=>$res_data['errcode'],
+            'errmsg'=>$res_data['errmsg'],
+        ];
+        return $data;
 //        $data=[
 //            'user_name'=>$uname,
 //            'user_pwd'=>$upwd,
