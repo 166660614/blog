@@ -133,7 +133,7 @@ class UserController extends Controller{
         $res_data =json_decode(curl_exec($curl).true);
         $data=[
             'errcode'=>'4001',
-            'errmsg'=>'登陆成功',
+            'errmsg'=>$res_data,
         ];
         return $data;
         $data=[
