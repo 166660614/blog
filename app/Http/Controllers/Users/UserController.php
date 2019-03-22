@@ -116,7 +116,7 @@ class UserController extends Controller{
     public function ulogin(){
         $uname=$_POST['uname'];
         $upwd=$_POST['upwd'];
-        $url="http://passport.52self.cn/u/login";
+        $url="http://passport.52self.cn/u/ulogin";
         $curl = curl_init();
         //设置抓取的url
         curl_setopt($curl, CURLOPT_URL, $url);
