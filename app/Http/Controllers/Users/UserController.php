@@ -166,7 +166,7 @@ class UserController extends Controller{
     }
     public function ucenter(){
         $array=$_POST['array'];
-        $array=var_dump($array);
+       var_dump($array);exit;
         return $array;
     }
 }
