@@ -167,10 +167,21 @@ class UserController extends Controller{
     public function ucenter(){
         $user_id=$_POST['user_id'];
         $token=$_POST['token'];
-        $data=[
-            'token'=>$token,
-            'user_id'=>$user_id,
-        ];
+        $ktoken='token:u:'.$user_id;
+        $redis_token=Redis::hget('$token','app:token');
+        if($token==$redis_token){
+            $user_info=UserModel::where(['user_id'=>$user_id])->first();
+            $data=[
+                'errcode'=>4001,
+                'errmsg'=>'ok',
+                'user_name'=>$user_info['user_name'],
+            ];
+        }else{
+            $data=[
+                'errcode'=>5001,
+                'errmsg'=>'no'
+            ];  
+        }
         return $data;
     }
 }
