@@ -23,3 +23,5 @@ $router->post('/h/api','Users\UserController@hapi');
 
 $router->post('/u/ulogin','Users\UserController@ulogin');
 $router->post('/u/uregister','Users\UserController@uregister');
+
+$router->post('/u/ucenter','Users\UserController@ucenter');//个人中心

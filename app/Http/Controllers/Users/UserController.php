@@ -138,23 +138,6 @@ class UserController extends Controller{
             'user_id'=>$res_data['user_id'],
         ];
         return $data;
-//        $where=[
-//            'user_name'=>$uname,
-//            'user_pwd'=>$upwd,
-//        ];
-//        $user_data=UserModel::where($where)->first();
-//        if($user_data){
-//            $data=[
-//                'errcode'=>'4001',
-//                'errmsg'=>'登陆成功',
-//            ];
-//        }else{
-//            $data=[
-//                'errcode'=>'5001',
-//                'errmsg'=>'账号或者密码错误',
-//            ];
-//        }
-//        return $data;
     }
     public function uregister(){
         $uname=$_POST['uname'];
@@ -180,23 +163,14 @@ class UserController extends Controller{
             'errmsg'=>$res_data['errmsg'],
         ];
         return $data;
-//        $data=[
-//            'user_name'=>$uname,
-//            'user_pwd'=>$upwd,
-//            'user_email'=>$uemail,
-//        ];
-//        $res=UserModel::insert($data);
-//        if($res){
-//            $data=[
-//                'errcode'=>'4001',
-//                'errmsg'=>'注册成功'
-//            ];
-//        }else{
-//            $data=[
-//                'errcode'=>'5001',
-//                'errmsg'=>'注册失败',
-//            ];
-//        }
-//        return $data;
+    }
+    public function ucenter(){
+        $user_id=$_POST['user_id'];
+        $token=$_POST['token'];
+        $data=[
+            'user_id'=>$user_id,
+            'token'=>$token,
+        ];
+        return $data;
     }
 }
