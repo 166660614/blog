@@ -134,6 +134,8 @@ class UserController extends Controller{
         $data=[
             'errcode'=>$res_data['errcode'],
             'errmsg'=>$res_data['errmsg'],
+            'token'=>$res_data['token'],
+            'user_id'=>$res_data['user_id'],
         ];
         return $data;
 //        $where=[
