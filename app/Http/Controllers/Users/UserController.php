@@ -168,9 +168,12 @@ class UserController extends Controller{
         $array=$_POST['object'];
         //$res=gettype($array);
         $data=[
-            'user_id'=>$array['user_id'],
-            'token'=>$array['token'],
+            'array'=>$array,
         ];
+        // $data=[
+        //     'user_id'=>$array['user_id'],
+        //     'token'=>$array['token'],
+        // ];
         return $data;
     }
 }
