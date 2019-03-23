@@ -165,15 +165,12 @@ class UserController extends Controller{
         return $data;
     }
     public function ucenter(){
-        $array=$_POST['object'];
-        //$res=gettype($array);
+        $user_id=$_POST['user_id'];
+        $token=$_POST['token'];
         $data=[
-            'array'=>$array,
+            'token'=>$token,
+            'user_id'=>$user_id,
         ];
-        // $data=[
-        //     'user_id'=>$array['user_id'],
-        //     'token'=>$array['token'],
-        // ];
         return $data;
     }
 }
