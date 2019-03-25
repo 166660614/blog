@@ -168,7 +168,7 @@ class UserController extends Controller{
         $user_id=$_POST['user_id'];
         $token=$_POST['token'];
         $ktoken='token:u:'.$user_id;
-        $redis_token=Redis::hget('$token','app:token');
+        $redis_token=Redis::hget('$ktoken','app:token');
         if($token==$redis_token){
             $user_info=UserModel::where(['user_id'=>$user_id])->first();
             $data=[
