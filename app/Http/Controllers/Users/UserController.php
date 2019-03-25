@@ -184,4 +184,20 @@ class UserController extends Controller{
         }
         return $data;
     }
+    public function dcenter(){
+        $user_id=$_POST['user_id'];
+        $token=$_POST['token'];
+        if(empty($user_id)||empty($token)){
+            $data=[
+                'errcode'=>'5001',
+                'errmsg'=>'no'
+            ];
+        }else{
+            $data=[
+                'errcode'=>'4001',
+                'errmsg'=>'ok'
+            ];
+        }
+        return $data;
+    }
 }

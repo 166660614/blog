@@ -25,3 +25,4 @@ $router->post('/u/ulogin','Users\UserController@ulogin');
 $router->post('/u/uregister','Users\UserController@uregister');
 
 $router->post('/u/ucenter','Users\UserController@ucenter');//个人中心
+$router->post('/u/dcenter','Users\UserController@dcenter');//个人中心验证是否登录
