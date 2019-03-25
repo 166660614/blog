@@ -172,13 +172,13 @@ class UserController extends Controller{
         if($token==$redis_token){
             $user_info=UserModel::where(['user_id'=>$user_id])->first();
             $data=[
-                'errcode'=>4001,
+                'errcode'=>'4001',
                 'errmsg'=>'ok',
                 'user_name'=>$user_info['user_name'],
             ];
         }else{
             $data=[
-                'errcode'=>5001,
+                'errcode'=>'5001',
                 'errmsg'=>'no'
             ];  
         }
